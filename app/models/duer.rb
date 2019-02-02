@@ -1,0 +1,2 @@
+class Duer < ApplicationRecord
+end

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Duers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Activity</th>
+      <th>Address</th>
+      <th>Effective</th>
+      <th>Other</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @duers.each do |duer| %>
+      <tr>
+        <td><%= duer.name %></td>
+        <td><%= duer.activity %></td>
+        <td><%= duer.address %></td>
+        <td><%= duer.effective %></td>
+        <td><%= duer.other %></td>
+        <td><%= link_to 'Show', duer %></td>
+        <td><%= link_to 'Edit', edit_duer_path(duer) %></td>
+        <td><%= link_to 'Destroy', duer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Duer', new_duer_path %>
