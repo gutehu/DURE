@@ -1,5 +1,5 @@
 class DuersController < ApplicationController
-  before_action :set_duer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /duers
   # GET /duers.json
@@ -10,6 +10,7 @@ class DuersController < ApplicationController
   # GET /duers/1
   # GET /duers/1.json
   def show
+    @duer = Duer.find(params[:id])
   end
 
   # GET /duers/new
@@ -19,6 +20,7 @@ class DuersController < ApplicationController
 
   # GET /duers/1/edit
   def edit
+    @duer = Duer.find(params[:id])
   end
 
   # POST /duers
@@ -54,6 +56,7 @@ class DuersController < ApplicationController
   # DELETE /duers/1
   # DELETE /duers/1.json
   def destroy
+    @duer = Duer.find(params[:id])
     @duer.destroy
     respond_to do |format|
       format.html { redirect_to duers_url, notice: 'Duer was successfully destroyed.' }
