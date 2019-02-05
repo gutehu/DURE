@@ -1,5 +1,5 @@
 class DuersController < ApplicationController
-  before_action :set_duer, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /duers
   # GET /duers.json
