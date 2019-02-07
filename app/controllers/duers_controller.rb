@@ -4,7 +4,7 @@ class DuersController < ApplicationController
   # GET /duers
   # GET /duers.json
   def index
-    @duers = Duer.all
+    @duers = Duer.where(user: current_user)
   end
 
   # GET /duers/1
@@ -27,17 +27,30 @@ class DuersController < ApplicationController
   # POST /duers.json
   def create
     @duer = Duer.new(duer_params)
+    @duer.user = current_user
 
     respond_to do |format|
-      if @duer.save
-        format.html { redirect_to @duer, notice: 'Duer was successfully created.' }
-        format.json { render :show, status: :created, location: @duer }
-      else
-        format.html { render :new }
-        format.json { render json: @duer.errors, status: :unprocessable_entity }
+
+          if @duer.save
+             format.html { redirect_to @duer, notice: 'Duer was successfully created.' }
+             format.json { render :show, status: :created, location: @duer }
+      # redirect_to duer_path(@duer)
+    elsif
+      format.html { render :new }
+      format.json { render json: @duer.errors, status: :unprocessable_entity }
       end
     end
   end
+
+
+
+    #   if @duer.save
+    #     format.html { redirect_to @duer, notice: 'Duer was successfully created.' }
+    #     format.json { render :show, status: :created, location: @duer }
+    #   else
+    #
+    #   end
+    # end
 
   # PATCH/PUT /duers/1
   # PATCH/PUT /duers/1.json
